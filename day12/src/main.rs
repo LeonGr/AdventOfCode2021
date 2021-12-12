@@ -38,11 +38,7 @@ fn is_uppercase(string: &String) -> bool {
 }
 
 fn can_use(string: &String, path: &Vec<String>, use_smaller_twice: bool) -> bool {
-    if is_uppercase(string) {
-        return true;
-    } else if !path.contains(string) {
-        return true;
-    } else {
+    is_uppercase(string) || !path.contains(string) || {
         if !use_smaller_twice || string.as_str() == "start" {
             return false;
         }
