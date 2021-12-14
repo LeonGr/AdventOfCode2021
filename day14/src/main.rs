@@ -57,8 +57,9 @@ fn solve(
 
     for ((first, _second), freq) in quantities {
         *frequencies.entry(first).or_insert(0) += freq;
-        // *frequencies.entry(_second).or_insert(0) += freq;
     }
+
+    *frequencies.entry(*template.last().unwrap()).or_default() += 1;
 
     let (min, max) = frequencies
         .iter()
@@ -67,15 +68,14 @@ fn solve(
         });
 
     max - min
-    // (max - min) / 2
 }
 
 fn part1(input: &(Vec<char>, HashMap<(char, char), char>)) {
-    println!("Part 1: {} +- 1", solve(input, 10));
+    println!("Part 1: {}", solve(input, 10));
 }
 
 fn part2(input: &(Vec<char>, HashMap<(char, char), char>)) {
-    println!("Part 2: {} +- 1", solve(input, 40));
+    println!("Part 2: {}", solve(input, 40));
 }
 
 fn main() {
